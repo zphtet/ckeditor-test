@@ -18,6 +18,8 @@
 
 .editor-content {
     padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
     min-height: 300px;
 }
 
@@ -109,47 +111,47 @@
     margin: 1em 0;
 }
 
-/* Heading styles */
+/* Heading Styles */
 .ck-content h1 {
-    font-size: 2.5em;
-    margin: 1em 0 0.5em;
-    font-weight: 700;
-    color: #2c3e50;
+    font-size: 2.5em !important;
+    margin: 1em 0 0.5em !important;
+    font-weight: 600 !important;
 }
 
 .ck-content h2 {
-    font-size: 2em;
-    margin: 0.83em 0 0.42em;
-    font-weight: 600;
-    color: #2c3e50;
+    font-size: 2em !important;
+    margin: 0.83em 0 !important;
+    font-weight: 600 !important;
 }
 
 .ck-content h3 {
-    font-size: 1.75em;
-    margin: 1em 0 0.5em;
-    font-weight: 600;
-    color: #2c3e50;
+    font-size: 1.75em !important;
+    margin: 1em 0 !important;
+    font-weight: 600 !important;
 }
 
 .ck-content h4 {
-    font-size: 1.5em;
-    margin: 1.33em 0 0.67em;
-    font-weight: 500;
-    color: #2c3e50;
+    font-size: 1.5em !important;
+    margin: 1.33em 0 !important;
+    font-weight: 600 !important;
 }
 
 .ck-content h5 {
-    font-size: 1.25em;
-    margin: 1.33em 0 0.67em;
-    font-weight: 500;
-    color: #2c3e50;
+    font-size: 1.25em !important;
+    margin: 1.67em 0 !important;
+    font-weight: 600 !important;
 }
 
 .ck-content h6 {
-    font-size: 1.1em;
-    margin: 1.33em 0 0.67em;
-    font-weight: 500;
-    color: #2c3e50;
+    font-size: 1.1em !important;
+    margin: 2.33em 0 !important;
+    font-weight: 600 !important;
+}
+
+.ck-content p {
+    font-size: 1em !important;
+    margin: 1em 0 !important;
+    line-height: 1.6 !important;
 }
 
 /* Heading dropdown styles */
