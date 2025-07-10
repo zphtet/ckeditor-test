@@ -6,6 +6,7 @@ import {
     Italic,
     Paragraph,
     List,
+    ListProperties,
     Link,
     Image,
     ImageUpload,
@@ -59,6 +60,7 @@ function App() {
                                 Italic,
                                 Paragraph,
                                 List,
+                                ListProperties,
                                 Link,
                                 Image,
                                 ImageUpload,
@@ -77,6 +79,13 @@ function App() {
                                 FontColor,
                                 FontFamily
                             ],
+                            list: {
+                                properties: {
+                                    styles: true,
+                                    startIndex: true,
+                                    reversed: true
+                                }
+                            },
                             fontFamily: {
                                 options: [
                                     'default',
