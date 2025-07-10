@@ -31,19 +31,27 @@ import {
 } from 'ckeditor5';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
+// Add type for the editor instance
+type Editor = DecoupledEditor;
+
 import 'ckeditor5/ckeditor5.css';
 import './editor.css';
 
 function App() {
     const editorToolbarRef = useRef<HTMLDivElement>(null);
     const [isMounted, setMounted] = useState(false);
-    const [editorInstance, setEditorInstance] = useState<any>(null);
+    const [editorInstance, setEditorInstance] = useState<Editor | null>(null);
 
     useEffect(() => {
         setMounted(true);
 
         return () => {
             setMounted(false);
+            // Clean up toolbar when component unmounts
+            if (editorToolbarRef.current) {
+                const children = Array.from(editorToolbarRef.current.children);
+                children.forEach((child: Element) => child.remove());
+            }
         };
     }, []);
 
@@ -52,16 +60,81 @@ function App() {
             const editorData = editorInstance.getData();
             const element = document.createElement('div');
             element.innerHTML = editorData;
+            element.style.width = '816px'; // Letter size width
+            element.style.padding = '40px';
+            element.style.boxSizing = 'border-box';
             
+            // Apply necessary styles for tables
+            const tables = element.getElementsByTagName('table');
+            Array.from(tables).forEach(table => {
+                table.style.width = '100%';
+                table.style.borderCollapse = 'collapse';
+                table.style.marginBottom = '1em';
+                
+                const cells = table.getElementsByTagName('td');
+                Array.from(cells).forEach(cell => {
+                    cell.style.border = '1px solid #ccc';
+                    cell.style.padding = '8px';
+                });
+            });
+
+            // Wait for images to load before generating PDF
+            const images = element.getElementsByTagName('img');
+            const imagePromises = Array.from(images).map(img => {
+                if (img.complete) {
+                    return Promise.resolve();
+                }
+                return new Promise((resolve) => {
+                    img.onload = resolve;
+                    img.onerror = resolve; // Handle error case as well
+                });
+            });
+
             const opt = {
-                margin: 1,
+                margin: [0.5, 0.5, 0.5, 0.5],
                 filename: 'document.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                image: { 
+                    type: 'jpeg', 
+                    quality: 1
+                },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    logging: true,
+                    allowTaint: true
+                },
+                jsPDF: { 
+                    unit: 'in', 
+                    format: 'letter', 
+                    orientation: 'portrait'
+                }
             };
 
-            html2pdf().set(opt).from(element).save();
+            // Add editor styles to maintain formatting
+            const style = document.createElement('style');
+            style.textContent = `
+                img { max-width: 100%; height: auto; }
+                table { width: 100%; border-collapse: collapse; }
+                td, th { border: 1px solid #ccc; padding: 8px; }
+                blockquote { border-left: 4px solid #ccc; padding-left: 16px; margin-left: 0; }
+                h1 { font-size: 2em; margin: 0.67em 0; }
+                h2 { font-size: 1.5em; margin: 0.75em 0; }
+                h3 { font-size: 1.17em; margin: 0.83em 0; }
+            `;
+            element.appendChild(style);
+
+            // Wait for images to load before generating PDF
+            Promise.all(imagePromises)
+                .then(() => {
+                    html2pdf()
+                        .set(opt)
+                        .from(element)
+                        .save()
+                        .catch((err: Error) => {
+                            console.error('Error generating PDF:', err);
+                            alert('Error generating PDF. Please try again.');
+                        });
+                });
         }
     };
     let key = ""
@@ -261,19 +334,12 @@ function App() {
                                 ]
                             }
                         }}
-                        onReady={(editor: any) => {
+                        onReady={(editor: Editor) => {
                             const toolbarElement = editor.ui.view.toolbar.element;
                             if (editorToolbarRef.current && toolbarElement) {
                                 editorToolbarRef.current.appendChild(toolbarElement);
                             }
                             setEditorInstance(editor);
-                        }}
-                        onDestroy={() => {
-                            if (editorToolbarRef.current) {
-                                const children = Array.from(editorToolbarRef.current.children);
-                                children.forEach((child: Element) => child.remove());
-                            }
-                            setEditorInstance(null);
                         }}
                     />
                 )}
