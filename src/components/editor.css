@@ -1,0 +1,213 @@
+.editor-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+.toolbar-container {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background: #f8f9fa;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.editor-content {
+    padding: 20px;
+    min-height: 300px;
+}
+
+/* CKEditor toolbar styling overrides */
+.ck.ck-toolbar {
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+.ck.ck-toolbar .ck-toolbar__items {
+    flex-wrap: wrap;
+}
+
+.ck.ck-editor__editable {
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* Image styles */
+.ck-content .image {
+    margin: 20px 0;
+}
+
+.ck-content .image.image-style-side {
+    max-width: 50%;
+    float: right;
+    margin-left: 20px;
+}
+
+.ck-content .image.image-style-block {
+    max-width: 100%;
+    margin: 1em auto;
+}
+
+.ck-content .image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.ck-content .image-caption {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Table styles */
+.ck-content .table {
+    width: 100%;
+    margin: 1em 0;
+    border-collapse: collapse;
+}
+
+.ck-content .table table {
+    border: 1px solid #bfbfbf;
+}
+
+.ck-content .table table td,
+.ck-content .table table th {
+    min-width: 2em;
+    padding: .4em;
+    border: 1px solid #bfbfbf;
+}
+
+/* Media embed styles */
+.ck-content .media {
+    margin: 1em 0;
+}
+
+/* Link styles */
+.ck-content .link {
+    color: #1a73e8;
+    text-decoration: underline;
+}
+
+/* Block quote styles */
+.ck-content blockquote {
+    border-left: 5px solid #ccc;
+    padding-left: 20px;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+/* List styles */
+.ck-content ul,
+.ck-content ol {
+    padding-left: 40px;
+    margin: 1em 0;
+}
+
+/* Heading styles */
+.ck-content h1 {
+    font-size: 2.5em;
+    margin: 1em 0 0.5em;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.ck-content h2 {
+    font-size: 2em;
+    margin: 0.83em 0 0.42em;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.ck-content h3 {
+    font-size: 1.75em;
+    margin: 1em 0 0.5em;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.ck-content h4 {
+    font-size: 1.5em;
+    margin: 1.33em 0 0.67em;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.ck-content h5 {
+    font-size: 1.25em;
+    margin: 1.33em 0 0.67em;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.ck-content h6 {
+    font-size: 1.1em;
+    margin: 1.33em 0 0.67em;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* Heading dropdown styles */
+.ck-dropdown__panel .ck-list__item {
+    padding: 8px 16px;
+}
+
+.ck-dropdown__panel .ck-list__item .ck-button__label {
+    line-height: 1.2;
+}
+
+.ck-heading_paragraph .ck-button__label {
+    font-weight: normal;
+}
+
+.ck-heading_heading1 .ck-button__label {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.ck-heading_heading2 .ck-button__label {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.ck-heading_heading3 .ck-button__label {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.ck-heading_heading4 .ck-button__label {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.ck-heading_heading5 .ck-button__label {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.ck-heading_heading6 .ck-button__label {
+    font-size: 0.8em;
+    font-weight: bold;
+} 
+
+.ck.ck-dropdown .ck-dropdown__panel .ck-list .ck-list__item {
+    padding: 2px 8px !important;
+    min-width: 40px;
+    font-size: 13px !important;
+}
+
+.ck.ck-dropdown .ck-dropdown__panel .ck-list {
+    padding: 4px 0 !important;
+}
+
+.ck.ck-dropdown__panel {
+    max-height: 200px;
+    overflow-y: auto;
+} 
+
+/* Remove preview sizing from dropdown items */
+.ck.ck-dropdown .ck-dropdown__panel .ck-list .ck-button .ck-button__label {
+    font-size: inherit !important;
+} 
