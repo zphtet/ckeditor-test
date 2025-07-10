@@ -14,6 +14,7 @@ import {
     ImageToolbar,
     ImageCaption,
     ImageResize,
+    ImageInsert,
     Heading,
     BlockQuote,
     Table,
@@ -68,6 +69,7 @@ function App() {
                                 ImageToolbar,
                                 ImageCaption,
                                 ImageResize,
+                                ImageInsert,
                                 Heading,
                                 BlockQuote,
                                 Table,
@@ -180,7 +182,7 @@ function App() {
                                 '|',
                                 'bulletedList', 'numberedList',
                                 '|',
-                                'uploadImage', 'blockQuote',
+                                'insertImage', 'blockQuote',
                                 '|',
                                 'insertTable',
                                 '|',
@@ -200,7 +202,11 @@ function App() {
                                     'resizeImage'
                                 ],
                                 upload: {
-                                    types: ['jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff']
+                                    types: ['jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff'],
+                                },
+                                insert: {
+                                    type: 'auto',
+                                    integrations: ['upload', 'url']
                                 }
                             },
                             table: {
