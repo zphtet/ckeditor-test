@@ -239,3 +239,60 @@
 .export-pdf-button:active {
     background-color: #174ea6;
 } 
+
+/* Undo/Redo button styles */
+.ck.ck-toolbar .ck-button[class*="undo"]:before,
+.ck.ck-toolbar .ck-button[class*="redo"]:before {
+    font-family: 'Arial';
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.ck.ck-toolbar .ck-button.ck-undo:before {
+    content: '↑';
+}
+
+.ck.ck-toolbar .ck-button.ck-redo:before {
+    content: '↓';
+}
+
+/* Hide default undo/redo icons */
+.ck.ck-toolbar .ck-button[class*="undo"] svg,
+.ck.ck-toolbar .ck-button[class*="redo"] svg {
+    display: none;
+}
+
+/* Adjust button padding for arrows */
+.ck.ck-toolbar .ck-button[class*="undo"],
+.ck.ck-toolbar .ck-button[class*="redo"] {
+    padding: 4px 8px;
+    min-width: 30px;
+} 
+
+/* Balloon toolbar styles */
+.ck.ck-balloon-panel {
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.ck.ck-balloon-panel .ck-toolbar {
+    border: none;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.ck.ck-balloon-panel .ck-toolbar .ck-button {
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 2px;
+}
+
+.ck.ck-balloon-panel .ck-toolbar .ck-button:hover {
+    background: #e8f0fe;
+}
+
+.ck.ck-balloon-panel .ck-toolbar .ck-button.ck-on {
+    background: #e8f0fe;
+    border-color: #c2e0ff;
+} 

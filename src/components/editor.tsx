@@ -26,7 +26,8 @@ import {
     MediaEmbed,
     FontSize,
     FontColor,
-    FontFamily
+    FontFamily,
+    BalloonToolbar
 } from 'ckeditor5';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
@@ -108,7 +109,8 @@ function App() {
                                 MediaEmbed,
                                 FontSize,
                                 FontColor,
-                                FontFamily
+                                FontFamily,
+                                BalloonToolbar
                             ],
                             list: {
                                 properties: {
@@ -218,6 +220,17 @@ function App() {
                                 'alignment',
                                 '|',
                                 'mediaEmbed'
+                            ],
+                            balloonToolbar: [
+                                'bold', 'italic', 'underline',
+                                '|',
+                                'fontFamily', 'fontSize', 'fontColor',
+                                '|',
+                                'link',
+                                '|',
+                                'bulletedList', 'numberedList',
+                                '|',
+                                'alignment'
                             ],
                             image: {
                                 toolbar: [
