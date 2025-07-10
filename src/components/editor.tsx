@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import html2pdf from 'html2pdf.js';
 import {
     DecoupledEditor,
     Bold,
@@ -34,6 +35,7 @@ import './editor.css';
 function App() {
     const editorToolbarRef = useRef<HTMLDivElement>(null);
     const [isMounted, setMounted] = useState(false);
+    const [editorInstance, setEditorInstance] = useState<any>(null);
 
     useEffect(() => {
         setMounted(true);
@@ -43,11 +45,36 @@ function App() {
         };
     }, []);
 
+    const exportToPdf = () => {
+        if (editorInstance) {
+            const editorData = editorInstance.getData();
+            const element = document.createElement('div');
+            element.innerHTML = editorData;
+            
+            const opt = {
+                margin: 1,
+                filename: 'document.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    };
+
     const key = "eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NTMxNDIzOTksImp0aSI6ImZlN2FhMzJlLTIyMTAtNGEzYi1hZDlkLWI1ZmJiY2NjM2E3NyIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6IjM2ZTE3MmUzIn0.jtGqTPNdh2g2AEDT2dzuQOP0PJC1Hq3M_Kz5I1qYONUKwPw7LhOBPcjoNQKF9Pg-kUyLgq_h4QrXk7zGBW_bKw";
 
     return (
         <div className="editor-container">
-            <div className="toolbar-container" ref={editorToolbarRef}></div>
+            <div className="toolbar-container" ref={editorToolbarRef}>
+                <button 
+                    className="export-pdf-button" 
+                    onClick={exportToPdf}
+                >
+                    Export to PDF
+                </button>
+            </div>
             <div className="editor-content">
                 {isMounted && (
                     <CKEditor
@@ -217,17 +244,19 @@ function App() {
                                 ]
                             }
                         }}
-                        onReady={(editor) => {
+                        onReady={(editor: any) => {
                             const toolbarElement = editor.ui.view.toolbar.element;
                             if (editorToolbarRef.current && toolbarElement) {
                                 editorToolbarRef.current.appendChild(toolbarElement);
                             }
+                            setEditorInstance(editor);
                         }}
-                        onAfterDestroy={() => {
+                        onDestroy={() => {
                             if (editorToolbarRef.current) {
                                 const children = Array.from(editorToolbarRef.current.children);
                                 children.forEach((child: Element) => child.remove());
                             }
+                            setEditorInstance(null);
                         }}
                     />
                 )}

@@ -5,7 +5,10 @@
 }
 
 .toolbar-container {
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
     border-bottom: 1px solid #ccc;
     background: #f8f9fa;
     position: sticky;
@@ -210,4 +213,27 @@
 /* Remove preview sizing from dropdown items */
 .ck.ck-dropdown .ck-dropdown__panel .ck-list .ck-button .ck-button__label {
     font-size: inherit !important;
+} 
+
+.export-pdf-button {
+    margin: 5px;
+    padding: 8px 16px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.export-pdf-button:hover {
+    background-color: #1557b0;
+}
+
+.export-pdf-button:active {
+    background-color: #174ea6;
 } 
