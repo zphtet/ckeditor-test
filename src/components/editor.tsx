@@ -20,7 +20,8 @@ import {
     Alignment,
     PasteFromOffice,
     MediaEmbed,
-    FontSize
+    FontSize,
+    FontColor
 } from 'ckeditor5';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
@@ -71,7 +72,8 @@ function App() {
                                 Alignment,
                                 PasteFromOffice,
                                 MediaEmbed,
-                                FontSize
+                                FontSize,
+                                FontColor
                             ],
                             fontSize: {
                                 options: [
@@ -82,6 +84,50 @@ function App() {
                                     18,
                                     20,
                                     22
+                                ]
+                            },
+                            fontColor: {
+                                colors: [
+                                    {
+                                        color: '#000000',
+                                        label: 'Black'
+                                    },
+                                    {
+                                        color: '#4D4D4D',
+                                        label: 'Dark gray'
+                                    },
+                                    {
+                                        color: '#FF0000',
+                                        label: 'Red'
+                                    },
+                                    {
+                                        color: '#FF8C00',
+                                        label: 'Orange'
+                                    },
+                                    {
+                                        color: '#FFFF00',
+                                        label: 'Yellow'
+                                    },
+                                    {
+                                        color: '#00FF00',
+                                        label: 'Green'
+                                    },
+                                    {
+                                        color: '#00FFFF',
+                                        label: 'Cyan'
+                                    },
+                                    {
+                                        color: '#0000FF',
+                                        label: 'Blue'
+                                    },
+                                    {
+                                        color: '#9932CC',
+                                        label: 'Purple'
+                                    },
+                                    {
+                                        color: '#FF69B4',
+                                        label: 'Pink'
+                                    }
                                 ]
                             },
                             heading: {
@@ -101,6 +147,8 @@ function App() {
                                 'heading',
                                 '|',
                                 'fontSize',
+                                '|',
+                                'fontColor',
                                 '|',
                                 'bold', 'italic',
                                 '|',
