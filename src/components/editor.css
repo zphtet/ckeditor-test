@@ -6,6 +6,59 @@
     padding: 20px;
 }
 
+.editor-layout {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.toc-panel {
+    width: 250px;
+    background: white;
+    border-radius: 4px;
+    padding: 16px;
+    height: fit-content;
+    position: sticky;
+    top: 80px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toc-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.toc-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.toc-item {
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 14px;
+    color: #444;
+}
+
+.toc-item:hover {
+    background-color: #f0f0f0;
+    color: #1a73e8;
+}
+
+.toc-item.level-1 { padding-left: 8px; font-weight: 600; }
+.toc-item.level-2 { padding-left: 16px; }
+.toc-item.level-3 { padding-left: 24px; }
+.toc-item.level-4 { padding-left: 32px; }
+.toc-item.level-5 { padding-left: 40px; }
+.toc-item.level-6 { padding-left: 48px; }
+
 .toolbar-container {
     display: flex;
     align-items: center;
@@ -29,6 +82,7 @@
     max-width: 816px; /* Approximately US Letter size width */
     min-height: 1056px; /* Approximately US Letter size height */
     position: relative;
+    flex: 1;
 }
 
 /* CKEditor toolbar styling overrides */
@@ -312,3 +366,8 @@
     background: #e8f0fe;
     border-color: #c2e0ff;
 } 
+
+
+.ck.ck-powered-by {
+     display: none !important;
+}
