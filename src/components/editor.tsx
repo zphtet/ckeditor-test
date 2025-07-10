@@ -21,7 +21,8 @@ import {
     PasteFromOffice,
     MediaEmbed,
     FontSize,
-    FontColor
+    FontColor,
+    FontFamily
 } from 'ckeditor5';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
@@ -73,8 +74,21 @@ function App() {
                                 PasteFromOffice,
                                 MediaEmbed,
                                 FontSize,
-                                FontColor
+                                FontColor,
+                                FontFamily
                             ],
+                            fontFamily: {
+                                options: [
+                                    'default',
+                                    'Arial',
+                                    'Courier New',
+                                    'Georgia',
+                                    'Lucida Sans Unicode',
+                                    'Tahoma',
+                                    'Times New Roman',
+                                    'Trebuchet MS'
+                                ]
+                            },
                             fontSize: {
                                 options: [
                                     8,
@@ -146,6 +160,7 @@ function App() {
                                 '|',
                                 'heading',
                                 '|',
+                                'fontFamily',
                                 'fontSize',
                                 '|',
                                 'fontColor',
